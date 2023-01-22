@@ -25,6 +25,7 @@
     "postcss-nesting": "^10.1.0"
   },
   "dependencies": {
+    "@headlessui/react": "^1.7.7",
     "@radix-ui/colors": "^0.1.8",
     "@stitches/react": "^1.2.8",
     "date-fns": "^2.23.0",

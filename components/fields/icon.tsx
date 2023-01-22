@@ -3,6 +3,7 @@ import { GoCircleSlash } from "react-icons/go";
 import { Button, wrapFieldsWithMeta } from "tinacms";
 import { Icon, IconOptions } from "../util/icon";
 import { BiChevronRight } from "react-icons/bi";
+import { Popover, Transition } from "@headlessui/react";
 
 const parseIconName = (name: string) => {
   const splitName = name.split(/(?=[A-Z])/);
