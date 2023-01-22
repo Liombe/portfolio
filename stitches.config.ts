@@ -1,14 +1,23 @@
 import {
   violet,
-  violetDark
+  violetA,
+  violetDark,
+  violetDarkA
 } from '@radix-ui/colors';
 import { createStitches } from '@stitches/react';
 
 export const { getCssText, createTheme, styled } = createStitches({
   theme: {
     colors: {
-      ...violet
+      ...violet,
+      ...violetA
     },
+    space: {
+      1: '0.25rem',
+      2: '0.5rem',
+      3: '0.75rem',
+      4: '1rem'
+    }
   },
   utils: {
     // Abbreviated margin properties
@@ -77,5 +86,6 @@ export const { getCssText, createTheme, styled } = createStitches({
 export const darkTheme = createTheme({
   colors: {
     ...violetDark,
+    ...violetDarkA,
   },
 });

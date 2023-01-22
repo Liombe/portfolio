@@ -1,5 +1,6 @@
 import { defineStaticConfig } from "tinacms";
 import { contentBlockSchema } from "../components/blocks/content";
+import { projectsBlockSchema } from "../components/blocks/projects";
 import { ColorPickerInput } from "../components/fields/color";
 import { iconSchema } from "../components/util/icon";
 
@@ -348,6 +349,37 @@ const config = defineStaticConfig({
               return `/about`;
             }
             return undefined;
+          },
+        },
+        fields: [
+          {
+            type: "string",
+            label: "Title",
+            name: "title",
+            description:
+              "The title of the page. This is used to display the title in the CMS",
+            isTitle: true,
+            required: true,
+          },
+          {
+            type: "object",
+            list: true,
+            name: "blocks",
+            label: "Sections",
+            ui: {
+              visualSelector: true,
+            },
+            templates: [contentBlockSchema, projectsBlockSchema],
+          },
+        ],
+      },
+      {
+        label: "Projects",
+        name: "project",
+        path: "content/projects",
+        ui: {
+          router: ({ document }) => {
+            return `/projects/${document._sys.filename}`;
           },
         },
         fields: [
