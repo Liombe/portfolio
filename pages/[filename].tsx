@@ -2,6 +2,7 @@ import { Blocks } from "../components/blocks-renderer";
 import { useTina } from "tinacms/dist/react";
 import { Layout } from "../components/layout";
 import { client } from "../.tina/__generated__/client";
+import { Box } from "../components/Box";
 
 export default function HomePage(
   props: AsyncReturnType<typeof getStaticProps>["props"]
@@ -12,7 +13,30 @@ export default function HomePage(
     data: props.data,
   });
   return (
-    <Layout rawData={data} data={data.global as any}>
+    <Layout data={data.global as any}>
+      <Box css={{ textAlign: "center" }}>
+        <Box
+          as="h1"
+          css={{
+            display: "inline-block",
+            backgroundImage:
+              "url('https://images.unsplash.com/photo-1611625105602-42ee06be977e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2671&q=80')",
+            WebkitTextFillColor: "transparent",
+            backgroundSize: "100% auto",
+            backgroundPosition: "center",
+            fontFamily: "'Abril Fatface', display",
+            letterSpacing: "0.05em",
+            fontSize: "125px",
+            fontWeight: "900",
+            textAlign: "center",
+          }}
+          style={{
+            WebkitBackgroundClip: "text",
+          }}
+        >
+          {data.page.title}
+        </Box>
+      </Box>
       <Blocks {...data.page} />
     </Layout>
   );

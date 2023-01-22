@@ -16,6 +16,7 @@ import { Container } from "../util/container";
 import { Section } from "../util/section";
 import { useTheme } from "../layout";
 import format from "date-fns/format";
+// import { fr } from "date-fns/esm/locale";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
 import { Prism } from "tinacms/dist/rich-text/prism";
 import type { TinaMarkdownContent, Components } from "tinacms/dist/rich-text";
@@ -127,9 +128,14 @@ export const Post = (props) => {
   };
 
   const date = new Date(props.date);
+  const updatedDate = new Date(props.updated_date);
   let formattedDate = "";
+  let formattedUpdatedDate = "";
   if (!isNaN(date.getTime())) {
-    formattedDate = format(date, "MMM dd, yyyy");
+    formattedDate = format(date, "dd MMM yyyy");
+  }
+  if (!isNaN(updatedDate.getTime())) {
+    formattedUpdatedDate = format(updatedDate, "dd MMM yyyy");
   }
 
   return (
@@ -172,7 +178,7 @@ export const Post = (props) => {
             data-tinafield="date"
             className="text-base text-gray-400 group-hover:text-gray-500 dark:text-gray-300 dark:group-hover:text-gray-150"
           >
-            {formattedDate}
+            {formattedDate} (last updated at: {formattedUpdatedDate})
           </p>
         </div>
       </Container>

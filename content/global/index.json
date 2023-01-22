@@ -1,20 +1,16 @@
 {
   "header": {
     "icon": {
-      "name": "Tina",
+      "name": "BiBall",
       "color": "orange",
       "style": "float"
     },
-    "name": "Tina Starter",
+    "name": "Léa Chaminadas",
     "color": "default",
     "nav": [
       {
-        "href": "",
-        "label": "Home"
-      },
-      {
-        "href": "about",
-        "label": "About"
+        "href": "home",
+        "label": "Accueil"
       },
       {
         "href": "posts",
@@ -31,8 +27,8 @@
     }
   },
   "theme": {
-    "color": "yellow",
-    "font": "nunito",
+    "color": "orange",
+    "font": "lato",
     "darkMode": "dark"
   }
 }

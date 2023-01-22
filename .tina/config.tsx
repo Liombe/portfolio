@@ -1,8 +1,5 @@
 import { defineStaticConfig } from "tinacms";
 import { contentBlockSchema } from "../components/blocks/content";
-import { featureBlockSchema } from "../components/blocks/features";
-import { heroBlockSchema } from "../components/blocks/hero";
-import { testimonialBlockSchema } from "../components/blocks/testimonial";
 import { ColorPickerInput } from "../components/fields/color";
 import { iconSchema } from "../components/util/icon";
 
@@ -40,7 +37,14 @@ const config = defineStaticConfig({
           router: ({ document }) => {
             return `/posts/${document._sys.filename}`;
           },
+          defaultItem: () => {
+            return {
+              date: new Date().toISOString(),
+              updated_date: new Date().toISOString(),
+            };
+          },
         },
+
         fields: [
           {
             type: "string",
@@ -70,8 +74,17 @@ const config = defineStaticConfig({
             label: "Posted Date",
             name: "date",
             ui: {
-              dateFormat: "MMMM DD YYYY",
-              timeFormat: "hh:mm A",
+              dateFormat: "DD MMMM YYYY",
+              timeFormat: "HH:mm",
+            },
+          },
+          {
+            type: "datetime",
+            label: "Updated Date",
+            name: "updated_date",
+            ui: {
+              dateFormat: "DD MMMM YYYY",
+              timeFormat: "HH:mm",
             },
           },
           {
@@ -355,13 +368,7 @@ const config = defineStaticConfig({
             ui: {
               visualSelector: true,
             },
-            templates: [
-              heroBlockSchema,
-              // @ts-ignore
-              featureBlockSchema,
-              contentBlockSchema,
-              testimonialBlockSchema,
-            ],
+            templates: [contentBlockSchema],
           },
         ],
       },
